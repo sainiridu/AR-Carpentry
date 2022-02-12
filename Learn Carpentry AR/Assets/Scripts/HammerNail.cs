@@ -5,7 +5,9 @@ using UnityEngine;
 public class HammerNail : MonoBehaviour
 {
     private GameObject parentObject;
-    public int hits = 0;
+    public int currentHits = 0;
+    public int maxHits = 10;
+
 
     private void Start()
     {
@@ -13,9 +15,9 @@ public class HammerNail : MonoBehaviour
     }
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.CompareTag("Hammer") && hits < 15)
+        if (other.gameObject.CompareTag("Hammer") && currentHits <= maxHits)
         {
-            hits++;
+            currentHits++;
             
             parentObject.transform.position = Vector3.MoveTowards(parentObject.transform.position, new Vector3(parentObject.transform.position.x, parentObject.transform.position.y - 1, parentObject.transform.position.z), 0.015f);
         }
