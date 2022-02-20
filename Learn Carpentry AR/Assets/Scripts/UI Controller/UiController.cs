@@ -8,9 +8,9 @@ public class UiController : MonoBehaviour
 
     [SerializeField] private GameObject[] m_Model;
 
-    [SerializeField] private GameObject m_Parent;
-    [SerializeField] private GameObject m_currentModel;
-    private int m_CurrentObjectIndex = 0;
+    [SerializeField] public GameObject m_Parent;
+    [SerializeField] public GameObject m_currentModel;
+    [HideInInspector]public int m_CurrentObjectIndex = 0;
 
     private void Start()
     {

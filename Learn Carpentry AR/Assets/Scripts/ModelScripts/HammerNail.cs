@@ -10,6 +10,8 @@ public class HammerNail : MonoBehaviour
     public int currentHits = 0;
     public int maxHits = 10;
 
+    public bool portableHammer;
+
 
     private void Start()
     {
@@ -19,19 +21,25 @@ public class HammerNail : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Hammer") && currentHits <= maxHits)
         {
+
             currentHits++;
-            
+
             parentObject.transform.position = Vector3.MoveTowards(parentObject.transform.position, new Vector3(parentObject.transform.position.x + directionToMove.x, parentObject.transform.position.y + directionToMove.y, parentObject.transform.position.z + directionToMove.z), 0.01f);
 
-            if (currentHits > maxHits)
+            if (currentHits > maxHits && !maxHitsReached)
             {
                 maxHitsReached = true;
-               // other.gameObject.GetComponent<Animator>().StopPlayback();
+
+                if (portableHammer)
+                {
+                    GameObject.FindGameObjectWithTag("HammerManager").GetComponent<MoveHammerToNextNail>().MoveToNextHammer();
+
+                }
                 other.gameObject.SetActive(false);
             }
 
         }
-        
+
 
 
     }

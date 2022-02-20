@@ -10,6 +10,8 @@ TagManager:
   - Step_2
   - Step_3
   - Step_4
+  - UIController
+  - HammerManager
   layers:
   - Default
   - TransparentFX
