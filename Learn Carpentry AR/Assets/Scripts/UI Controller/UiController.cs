@@ -9,7 +9,7 @@ public class UiController : MonoBehaviour
     [SerializeField] private GameObject[] m_Model;
 
     [SerializeField] public GameObject m_Parent;
-    [SerializeField] public GameObject m_currentModel;
+    [HideInInspector] private GameObject m_currentModel;
     [HideInInspector]public int m_CurrentObjectIndex = 0;
 
     private void Start()
@@ -18,7 +18,7 @@ public class UiController : MonoBehaviour
         {
             m_PreviousButton.SetActive(false);
         }
-        m_currentModel = Instantiate(m_Model[m_CurrentObjectIndex],new Vector3(0,0,0), Quaternion.identity, m_Parent.transform);
+        m_currentModel = Instantiate(m_Model[m_CurrentObjectIndex],m_Parent.transform.position, m_Parent.transform.rotation, m_Parent.transform);
     }
 
     public void NextModel()
@@ -30,7 +30,7 @@ public class UiController : MonoBehaviour
             Destroy(m_currentModel);
             //m_Model[m_CurrentObjectIndex].SetActive(false);
             m_CurrentObjectIndex += 1;
-           m_currentModel = Instantiate(m_Model[m_CurrentObjectIndex],new Vector3(0,0,0), Quaternion.identity, m_Parent.transform);
+           m_currentModel = Instantiate(m_Model[m_CurrentObjectIndex],m_Parent.transform.position, m_Parent.transform.rotation, m_Parent.transform);
             //m_Model[m_CurrentObjectIndex].SetActive(true);
         }
 
@@ -45,7 +45,7 @@ public class UiController : MonoBehaviour
             //m_Model[m_CurrentObjectIndex].SetActive(false);
             Destroy(m_currentModel);
             m_CurrentObjectIndex -= 1;
-            m_currentModel = Instantiate(m_Model[m_CurrentObjectIndex],new Vector3(0,0,0), Quaternion.identity, m_Parent.transform);
+            m_currentModel = Instantiate(m_Model[m_CurrentObjectIndex],m_Parent.transform.position, m_Parent.transform.rotation, m_Parent.transform);
             //m_Model[m_CurrentObjectIndex].SetActive(true);
         }
 
