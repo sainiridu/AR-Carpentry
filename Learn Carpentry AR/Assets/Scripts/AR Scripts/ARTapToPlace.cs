@@ -29,7 +29,7 @@ public class ARTapToPlace : MonoBehaviour
         if (!TryGetTouchPosition(out Vector2 touchPosition))
             return;
 
-            
+
 
         if (!IsPointerOverUIObject())
         {
